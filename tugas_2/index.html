@@ -115,27 +115,25 @@
 <p>### <em>Euclidean distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#euclidean-distance">¶</a></p>
 <p>Jarak  yang paling terkenal yang digunakan untuk data numerik adalah jarak  Euclidean. Ini adalah kasus khusus dari jarak Minkowski ketika m = 2.  Jarak Euclidean berkinerja baik ketika digunakan untuk kumpulan data  cluster kompak atau terisolasi . Meskipun jarak Euclidean sangat umum  dalam pengelompokan, ia memiliki kelemahan: jika dua vektor data tidak  memiliki nilai atribut yang sama, kemungkin memiliki jarak yang lebih  kecil daripada pasangan vektor data lainnya yang mengandung nilai  atribut yang sama. Masalah lain dengan jarak Euclidean sebagai fitur  skala terbesar akan mendominasi yang lain. Normalisasi fitur kontinu  adalah solusi untuk mengatasi kelemahan ini. </p>
 <p>### <em>Average Distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#average-distance">¶</a></p>
-<p>Berkenaan  dengan kekurangan dari Jarak Euclidian Distance diatas, rata rata jarak  adala versi modikfikasid ari jarak Euclidian untuk memperbaiki hasil.  Untuk dua titik x,y</p>
-<p>dalam ruang dimensi </p>
-<p>, rata-rata jarak didefinisikan dengan </p>
+<p>Berkenaan  dengan kekurangan dari Jarak Euclidian Distance diatas, rata rata jarak  adala versi modikfikasid ari jarak Euclidian untuk memperbaiki hasil.  Untuk dua titik x,y dalam ruang dimensi , rata-rata jarak didefinisikan dengan </p>
 <pre><code class="python">dave=(1nn∑i=1(xi−yi)2)12
 </code></pre>
 
 <p>### <em>Weighted euclidean distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#weighted-euclidean-distance">¶</a></p>
 <p>Jika  berdasarkan tingkatan penting dari masing masing atribut ditentukan,  maka Weighted Euclidean distance adalah modifikisasi lain dari jarak  Euclidean distance yang dapat digunakan. Ukuran ini dirumuskan dengan </p>
 <p>dwe=(n∑i=1wi(xi−yi)2)12</p>
-<p>dimana wi</p>
+<p>dimana wi adalah bobot yang diberikan pada atribut ke i.</p>
 <p>### <em>Chord distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#chord-distance">¶</a></p>
 <p>Chord  distance adalah salah satu ukuran jarak modifikasi Euclidean distance  untuk mengatasi kekurangan dari Euclidean distance. Ini dapat dipecahkan  juga dengan menggunakan skala pengukuran yang baik. Jarak ini dapat  juga dihitung dari data yang tidak dinormalisasi . Chord distance  didefinisikan dengan </p>
 <pre><code class="python">dchord=(2−2∑ni=1xiyi∥x∥2∥y∥2)12
 </code></pre>
 
-<p>dimana ∥x∥2 adalah </p>
+<p>dimana ∥x∥2 adalah L2-norm∥x∥2=√∑ni=1x2</p>
 <h3 id="mahalanobis-distance"><em>Mahalanobis distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#mahalanobis-distance">¶</a></h3>
 <p>Mahalanobis  distance berdasarkan data berbeda dengan Euclidean dan Manhattan  distances yang bebas antra data dengan data yang lain. Jarak Mahalanobis  yang teratur dapat digunakan untuk mengekstraksi hyperellipsoidal  clusters. Jarak Mahalanobis dapat mengurangi distorsi yang disebabkan  oleh korelasi linier antara fitur dengan menerapkan transformasi  pemutihan ke data atau dengan menggunakan kuadrat Jarak mahalanobis.  Mahalanobis distance dinyatakan dengan</p>
 <pre><code>dmah=√(x−y)S−1(x−y)T
 </code></pre>
-<p>diman S adalah matrik covariance data.</p>
+<p>dimana S adalah matrik covariance data.</p>
 <p>### <em>Cosine measure</em><a href="https://mulaab.github.io/datamining/memahami-data/#cosine-measure">¶</a></p>
 <p>Ukuran Cosine similarity lebih banyak digunakan dalam similaritas dokumen dan dinyatakan dengan </p>
 <pre><code>Cosine(x,y)=∑ni=1xiyi∥x∥2∥y∥2
@@ -150,17 +148,13 @@
 <p>Mari  kita lihat similaritas dan desimilirity untuk objek yang dijelaskan  oleh atribut biner simetris atau asimetris. Aatribut biner hanya  memiliki dua status: 0 dan 1 Contoh atribut perokok menggambarkan  seorang pasien, misalnya, 1 menunjukkan bahwa pasien merokok, sedangkan 0  menunjukkan pasien tidak merokok. Memperlakukan atribut biner sebagai  atribut numerik tidak diperkenankan. Oleh karena itu, metode khusus  untuk data biner diperlukan untuk membedakan komputasi.</p>
 <p>Jadi,  bagaimana kita bisa menghitung ketidaksamaan antara dua atribut biner?  ”Satu pendekatan melibatkan penghitungan matriks ketidaksamaan dari data  biner yang diberikan. Jika semua atribut biner dianggap memiliki bobot  yang sama, kita memiliki tabel kontingensi 2×2</p>
 <p>di mana i dan r adalah jumlah atribut yang sama dengan 1 untuk objek j, i tetapi 1 untuk objek t adalah jumlah atribut yang sama dengan 0 untuk kedua objek j. Jumlah total atribut adalah p=q+r+s+t</p>
-<p>Ingatlah  bahwa untuk atribut biner simetris, masing-masing nilai bobot yang  sama.Dissimilarity yang didasarkan pada atribut aymmetric binary disebut  symmetric binary dissimilarity. Jika objek i dan j dinyatakan sebagai  atribut biner simetris, maka dissimilarity antari</p>
-<p>dan </p>
-<p>adalah</p>
+<p>Ingatlah  bahwa untuk atribut biner simetris, masing-masing nilai bobot yang  sama.Dissimilarity yang didasarkan pada atribut aymmetric binary disebut  symmetric binary dissimilarity. Jika objek i dan j dinyatakan sebagai  atribut biner simetris, maka dissimilarity antari dan adalah</p>
 <pre><code>d(i,j)=r+sq+r+s+t
 </code></pre>
 <p>Untuk  atribut biner asimetris, kedua kondisi tersebut tidak sama pentingnya,  seperti hasil positif (1) dan negatif (0) dari tes penyakit. Diberikan  dua atribut biner asimetris, pencocokan keduanya 1 (kecocokan positif)  kemudian dianggap lebih signifikan daripada kecocokan negatif.  Ketidaksamaan berdasarkan atribut-atribut ini disebut asimetris biner  dissimilarity, di mana jumlah kecocokan negatif, t, dianggap tidak  penting dan dengan demikian diabaikan. Berikut perhitungannya</p>
 <pre><code>d(i,j)=r+sq+r+s
 </code></pre>
-<p>Kita  dapat mengukur perbedaan antara dua atribut biner berdasarkan pada  disimilarity. Misalnya, biner asimetris kesamaan antara objek i</p>
-<p>dan </p>
-<p>dapat dihitung dengan</p>
+<p>Kita  dapat mengukur perbedaan antara dua atribut biner berdasarkan pada  disimilarity. Misalnya, biner asimetris kesamaan antara objek i dan dapat dihitung dengan</p>
 <pre><code>sim(i,j)=qq+r+s=1−d(i,j)
 </code></pre>
 <p>Persamaan similarity ini disebut dengan <strong>Jaccard coefficient</strong></p>
@@ -184,16 +178,182 @@
 <p>d(x,y)=C∑c=1P(c|x)(1−P(c|y))</p>
 <p>## <strong>Mengukur Jarak Tipe Ordinal</strong><a href="https://mulaab.github.io/datamining/memahami-data/#mengukur-jarak-tipe-ordinal">¶</a></p>
 <p><strong>Han, J., Pei, J., &amp; Kamber, M. (2011). Data mining: concepts and techniques. Elsevier</strong>.</p>
-<p>Nilai-nilai  atribut ordinal memiliki urutan atau peringkat, namun besarnya antara  nilai-nilai berturut-turut tidak diketahui. Contohnya tingkatan kecil,  sedang, besar untuk atribut ukuran. Atribut ordinal juga dapat diperoleh  dari diskritisasi atribut numerik dengan membuat rentang nilai ke dalam  sejumlah kategori tertentu. Kategori-kategori ini disusun dalam  peringkat. Yaitu, rentang atribut numerik dapat dipetakan ke atribut  ordinal f yang memiliki M adalah jumlah keadaan yang dapat dilakukan oleh atribut ordinalmemiliki. State ini menentukan peringkat  Perlakuan untuk atribut ordinal adalah cukup sama dengan atribut numerik ketika menghitung disimilarity antara objek. Misalkan f adalah atribut-atribut dari atribut ordinal dari objek. Menghitung disimilarity terhadap f fitur sebagai berikut:</p>
-<p>Nilai f</p>
-<p>untuk objek ke-xif, dan Mf status urutan , mewakili peringkat xif dengan peringkatnya, Karena  setiap atribut ordinal dapat memiliki jumlah state yang berbeda,  diperlukan untuk memetakan rentang setiap atribut ke [0,0, 1.0] sehingga  setiap atribut memiliki bobot yang sama. Perl melakukan normalisasi  data dengan mengganti peringkat rif dengan Dissimilarity  kemudian dihitung dengan menggunakan ukuran jarak seperti atribut  numerik dengan data yang baru setelah ditransformasi $ z _ { i f }$</p>
-<p>## <strong>Menghitung Jarak Tipe Campuran</strong><a href="https://mulaab.github.io/datamining/memahami-data/#menghitung-jarak-tipe-campuran">¶</a></p>
+<p>Nilai-nilai atribut ordinal memiliki urutan atau peringkat, namun besarnya antara nilai-nilai berturut-turut tidak diketahui. Contohnya tingkatan kecil, sedang, besar untuk atribut ukuran. Atribut ordinal juga dapat diperoleh dari diskritisasi atribut numerik dengan membuat rentang nilai ke dalam sejumlah kategori  tertentu. Kategori-kategori ini disusun dalam peringkat. Yaitu, rentang atribut numerik dapat dipetakan
+ke atribut ordinal f yang memiliki Mf state. Misalnya, kisaran suhu atribut skala-skala (dalam Celcius) dapat 
+diatur ke dalam status berikut: −30 hingga −10, −10 hingga 10, 10 hingga 30, masing-masing mewakili kategori suhu dingin, suhu sedang, dan suhu hangat. M adalah jumlah keadaan yang dapat dilakukan oleh atribut ordinalmemiliki. State ini menentukan peringkat 1,...,Mf</p>
+<p>Perlakuan untuk atribut ordinal adalah cukup sama dengan atribut numerik ketika menghitung disimilarity antara objek. Misalkan f adalah atribut-atribut dari atribut ordinal dari n objek. Menghitung disimilarity terhadap f fitur sebagai berikut:</p>
+<ul>
+<li>
+<p>Nilai f untuk objek ke-i adalah xif, dan f memiliki Mf status urutan , mewakili peringkat 1,..,Mf Ganti setiap xif dengan peringkatnya, rif∈{1...Mf}</p>
+</li>
+<li>
+<p>Karena setiap atribut ordinal dapat memiliki jumlah state yang berbeda, diperlukan untuk memetakan rentang setiap atribut ke [0,0, 1.0] sehinggasetiap atribut memiliki bobot yang sama. Perl melakukan normalisasi data dengan mengganti peringkat rif dengan </p>
+</li>
+</ul>
+<p>zif=rif−1/Mf−1</p>
+<ul>
+<li>Dissimilarity kemudian dihitung dengan menggunakan ukuran jarak seperti 
+  atribut numerik dengan data yang baru setelah ditransformasi $ z _ { i f}$</li>
+</ul>
+<h2 id="menghitung-jarak-tipe-campuran"><strong>Menghitung Jarak Tipe Campuran</strong><a href="https://mulaab.github.io/datamining/memahami-data/#menghitung-jarak-tipe-campuran">¶</a></h2>
 <p><strong>Wilson,  D. R., &amp; Martinez, T. R. (1997). Improved heterogeneous distance  functions. Journal of artificial intelligence research, 6, 1-34.</strong></p>
-<p>Menghitung  ketidaksamaan antara objek dengan atribut campuran yang berupa nominal,  biner simetris, biner asimetris, numerik, atau ordinal yang ada pada  kebanyakan databasae dapat dinyatakan dengan memproses semua tipe  atribut secara bersamaan. Salah satu teknik tersebut menggabungkan  atribut yang berbeda ke dalam matriks ketidaksamaan tunggal dan  menyatakannya dengan skala interval antar [0,0,1.0]. Misalkan data berisi atribut i dan dinyatakan dengan </p>
-<pre><code class="python">d(i,j)=∑pf=1δ(f)ijd(f)ij∑pf=1δ(f)ij
+<p>Menghitung  ketidaksamaan antara objek dengan atribut campuran yang berupa nominal,  biner simetris, biner asimetris, numerik, atau ordinal yang ada pada  kebanyakan databasae dapat dinyatakan dengan memproses semua tipe  atribut secara bersamaan. Salah satu teknik tersebut menggabungkan  atribut yang berbeda ke dalam matriks ketidaksamaan tunggal dan  menyatakannya dengan skala interval antar [0,0,1.0]. Misalkan data berisi atribut i dan j dinyatakan dengan</p>
+<p>​       d(i,j)=∑pf=1δ(f)ijd(f)ij/∑pf=1δ(f)ij</p>
+<p>dimana δfij=0 - jika xjf adalah hilang (i.e., tidak ada pengukuran dari atribut f untuk objek j </p>
+<ul>
+<li>jika xif=xjf=0 dan atribut f adalah binary asymmetric, </li>
+</ul>
+<p>selain itu δfij=1 </p>
+<p>Kontribusi dari atribut f untuk dissimilarity antara i dan j (yaitu.) dihitung bergantung pada tipenya, </p>
+<ul>
+<li>Jika f adalah numerik, , di mana h menjalankan semua nilai objek yang tidak hilang untuk atribut f</li>
+<li>Jika f adalah nominal atau binary,$d_{ij}^{f}=0 $jika dfij=1</li>
+<li>Jika f adalah ordinal maka hitung rangking zif=rif−1Mf−1 , dan perlakukan </li>
+</ul>
+<h2 id="code">Code</h2>
+<pre><code class="python">import pandas as pd
+pd.read_csv(&quot;TAE.csv&quot;,sep=&quot;|&quot;)
 </code></pre>
 
-<p>dimana δfij=0 jika xjf adalah hilang (i.e., tidak ada pengukuran dari atribut f untuk objek j, jika xif=xjf=0 dan atribut f adalah binary asymmetric, selain itu δfij=1 Kontribusi dari atribut f untuk dissimilarity antara i dan j (yaitu.  ) dihitung bergantung pada tipenya, Jika f adalah numerik , di mana h menjalankan semua nilai  objek yang tidak hilang untuk atribut f jika f adalah nominal atau binary,$d_{ij}^{f}=0 $jika dfij=1 Jika f adalah ordinal maka hitung rangking zif=rif−1Mf−1 , dan perlakukan sebagai numerik.</p>
+<pre><code class="python">data=pd.read_csv(&quot;TAE.csv&quot;,sep=&quot;|&quot;)
+data.iloc[5:9]
+</code></pre>
+
+<pre><code class="python">binary=[0,3]
+ordinal=[5]
+num=[4]
+categorical=[1,2]
+b=int(data.values.tolist()[1][num[0]])**2
+print(b)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v1-v4&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v2-v4&quot;]+[0]+[0]+[0]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[0]+[0]+[0]+[0],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<h3 id="jarak-numerik">Jarak Numerik</h3>
+<pre><code class="python">def chordDist(v1,v2,jnis):
+    jmlh=0
+    normv1=0
+    normv2=0
+    for x in range (len(jnis)):
+        normv1=normv1+(int(data.values.tolist()[v1][jnis[x]])**2)
+        normv2=normv2+(int(data.values.tolist()[v2][jnis[x]])**2)
+        jmlh=jmlh+(int(data.values.tolist()[v1][jnis[x]])*int(data.values.tolist()[v2][jnis[x]]))
+    return ((2-(2*jmlh/(normv1*normv2)))**0.5)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[chordDist(0,1,num)]+[0]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[chordDist(0,2,num)]+[0]+[0]+[0],
+    [&quot;v1-v4&quot;]+[0]+[chordDist(0,3,num)]+[0]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[chordDist(1,2,num)]+[0]+[0]+[0],
+    [&quot;v2-v4&quot;]+[0]+[chordDist(1,3,num)]+[0]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[chordDist(2,3,num)]+[0]+[0]+[0],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<h3 id="jarak-ordinal">Jarak Ordinal</h3>
+<pre><code class="python">def ordDist(v1,v2,jns):
+    jmlh=0
+    for x in range (len(jns)):
+        z1=int(data.values.tolist()[v1][jns[x]])-1
+        z2=int(data.values.tolist()[v2][jns[x]])-1
+        jmlh=jmlh+chordDist(z1,z2,jns)
+    return (jmlh)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[chordDist(0,1,num)]+[ordDist(0,1,ordinal)]+[0]+[0],
+    [&quot;v1-v3&quot;]+[0]+[chordDist(0,2,num)]+[ordDist(0,2,ordinal)]+[0]+[0],
+    [&quot;v1-v4&quot;]+[0]+[chordDist(0,3,num)]+[ordDist(1,2,ordinal)]+[0]+[0],
+    [&quot;v2-v3&quot;]+[0]+[chordDist(1,2,num)]+[ordDist(2,3,ordinal)]+[0]+[0],
+    [&quot;v2-v4&quot;]+[0]+[chordDist(1,3,num)]+[ordDist(2,3,ordinal)]+[0]+[0],
+    [&quot;v3-v4&quot;]+[0]+[chordDist(2,3,num)]+[ordDist(2,3,ordinal)]+[0]+[0],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<h3 id="jarak-categorical">Jarak categorical</h3>
+<pre><code class="python">def categoricalDist(v1,v2,jnis):
+    jmlh=0
+    for x in range (len(jnis)):
+        if (data.values.tolist()[v1][jnis[x]])!=(data.values.tolist()[v2][jnis[x]]):
+            jmlh=jmlh+1
+    return (jmlh)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[0]+[chordDist(0,1,num)]+[ordDist(0,1,ordinal)]+[categoricalDist(0,1,categorical)]+[0],
+    [&quot;v1-v3&quot;]+[0]+[chordDist(0,2,num)]+[ordDist(0,2,ordinal)]+[categoricalDist(0,2,categorical)]+[0],
+    [&quot;v1-v4&quot;]+[0]+[chordDist(0,3,num)]+[ordDist(0,3,ordinal)]+[categoricalDist(0,3,categorical)]+[0],
+    [&quot;v2-v3&quot;]+[0]+[chordDist(1,2,num)]+[ordDist(1,2,ordinal)]+[categoricalDist(1,2,categorical)]+[0],
+    [&quot;v2-v4&quot;]+[0]+[chordDist(1,3,num)]+[ordDist(1,3,ordinal)]+[categoricalDist(1,3,categorical)]+[0],
+    [&quot;v3-v4&quot;]+[0]+[chordDist(2,3,num)]+[ordDist(2,3,ordinal)]+[categoricalDist(2,3,categorical)]+[0],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
+
+<h3 id="jarak-binary">Jarak Binary</h3>
+<pre><code class="python">def binaryDist(v1,v2,jnis):
+    q=0
+    r=0
+    s=0
+    t=0
+    for x in range (len(jnis)):
+        if (int(data.values.tolist()[v1][jnis[x]]))==1 and (int(data.values.tolist()[v2][jnis[x]]))==1:
+            q=q+1
+        elif (int(data.values.tolist()[v1][jnis[x]]))==1 and (int(data.values.tolist()[v2][jnis[x]]))==2:
+            r=r+1
+        elif (int(data.values.tolist()[v1][jnis[x]]))==2 and (int(data.values.tolist()[v2][jnis[x]]))==1:
+            s=s+1
+        else:
+            t=t+1
+    return ((r+s)/(q+r+s+t))
+</code></pre>
+
+<pre><code class="python">def jarak(v1,v2):
+    return ((chordDist(v1,v2,num)+ordDist(v1,v2,ordinal)+categoricalDist(v1,v2,categorical)+binaryDist(v1,v2,binary))/4)
+</code></pre>
+
+<pre><code class="python">from IPython.display import HTML, display
+import tabulate
+table=[
+    [&quot;Data&quot;]+[&quot;Jarak&quot;]+[&quot;Numeric&quot;]+[&quot;Ordinal&quot;]+[&quot;Categorical&quot;]+[&quot;Binary&quot;],
+    [&quot;v1-v2&quot;]+[&quot;{:.2f}&quot;.format(jarak(0,1))]+[&quot;{:.2f}&quot;.format(chordDist(0,1,num))]+[&quot;{:.2f}&quot;.format(ordDist(0,1,ordinal))]+[categoricalDist(0,1,categorical)]+[binaryDist(0,1,binary)],
+    [&quot;v1-v3&quot;]+[&quot;{:.2f}&quot;.format(jarak(0,2))]+[&quot;{:.2f}&quot;.format(chordDist(0,2,num))]+[&quot;{:.2f}&quot;.format(ordDist(0,2,ordinal))]+[categoricalDist(0,2,categorical)]+[binaryDist(0,2,binary)],
+    [&quot;v1-v4&quot;]+[&quot;{:.2f}&quot;.format(jarak(0,3))]+[&quot;{:.2f}&quot;.format(chordDist(0,3,num))]+[&quot;{:.2f}&quot;.format(ordDist(0,3,ordinal))]+[categoricalDist(0,3,categorical)]+[binaryDist(0,3,binary)],
+    [&quot;v2-v3&quot;]+[&quot;{:.2f}&quot;.format(jarak(1,2))]+[&quot;{:.2f}&quot;.format(chordDist(1,2,num))]+[&quot;{:.2f}&quot;.format(ordDist(1,2,ordinal))]+[categoricalDist(1,2,categorical)]+[binaryDist(1,2,binary)],
+    [&quot;v2-v4&quot;]+[&quot;{:.2f}&quot;.format(jarak(1,3))]+[&quot;{:.2f}&quot;.format(chordDist(1,3,num))]+[&quot;{:.2f}&quot;.format(ordDist(1,3,ordinal))]+[categoricalDist(1,3,categorical)]+[binaryDist(1,3,binary)],
+    [&quot;v3-v4&quot;]+[&quot;{:.2f}&quot;.format(jarak(2,3))]+[&quot;{:.2f}&quot;.format(chordDist(2,3,num))]+[&quot;{:.2f}&quot;.format(ordDist(2,3,ordinal))]+[categoricalDist(2,3,categorical)]+[binaryDist(2,3,binary)],
+    ]
+
+display(HTML(tabulate.tabulate(table, tablefmt='html')))
+</code></pre>
               
             </div>
           </div>
