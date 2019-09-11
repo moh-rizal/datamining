@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Data Mining - data mining</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Data Mining";
+    var mkdocs_page_input_path = "tugas_2.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> data mining</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about.md">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">data mining</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Data Mining</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="data-mining">Data Mining</h1>
+<p><a href="../index.html">home</a></p>
+<ul>
+<li>
+<h2 id="mengukur-jarak-data">Mengukur Jarak Data<a href="https://mulaab.github.io/datamining/memahami-data/#mengukur-jarak-data">¶</a></h2>
+</li>
+</ul>
+<p>## Mengukur Jarak Tipe Numerik<a href="https://mulaab.github.io/datamining/memahami-data/#mengukur-jarak-tipe-numerik">¶</a></p>
+<p><strong>Shirkhorshidi,  A. S., Aghabozorgi, S., &amp; Wah, T. Y. (2015). A comparison study on  similarity and dissimilarity measures in clustering continuous data.  PloS one, 10(12), e0144059.</strong></p>
+<p>Salah satu tantangan dalam  era ini dengan datatabase yang memiliki banyak tipe data. Mengukur jarak  adalah komponen utama dalam algoritma clustering berbasis jarak.  Alogritma seperit Algoritma Partisioning misal K-Mean, K-medoidm dan  fuzzy c-mean dan rough clustering bergantung pada jarak untuk melakukan  pengelompokkan</p>
+<p>Sebelum menjelaskan tentang beberapa macam ukuran jarak, kita mendefinisikan terlebih dahulu yaiut v1,v2</p>
+<p>menyatakandua vektor yang menyatakan xi,yi</p>
+<p>### <em>Minkowski Distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#minkowski-distance">¶</a></p>
+<p>Kelompk  Minkowski diantaranya adalah Euclidean distance dan Manhattan distance,  yang menjadi kasus khusus dari Minkowski distance. Minkowski distance  dinyatakan dengan</p>
+<p>dmin=( sumni=1|xi−yi|m)1m,m≥1</p>
+<p>diman m</p>
+<p>adalah bilangan riel positif dan n</p>
+<p>### <em>Manhattan distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#manhattan-distance">¶</a></p>
+<p>Manhattan  distance adalah kasus khsusu dari jarak Minkowski distance pada m = 1.  Seperti Minkowski Distance, Manhattan distance sensitif terhadap  outlier. BIla ukuran ini digunakan dalam algoritma clustering , bentuk  cluster adalah hyper-rectangular. Ukuran ini didefinisikan dengan </p>
+<pre><code>dman=n∑i=1|xi−yi|
+</code></pre>
+<p>### <em>Euclidean distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#euclidean-distance">¶</a></p>
+<p>Jarak  yang paling terkenal yang digunakan untuk data numerik adalah jarak  Euclidean. Ini adalah kasus khusus dari jarak Minkowski ketika m = 2.  Jarak Euclidean berkinerja baik ketika digunakan untuk kumpulan data  cluster kompak atau terisolasi . Meskipun jarak Euclidean sangat umum  dalam pengelompokan, ia memiliki kelemahan: jika dua vektor data tidak  memiliki nilai atribut yang sama, kemungkin memiliki jarak yang lebih  kecil daripada pasangan vektor data lainnya yang mengandung nilai  atribut yang sama. Masalah lain dengan jarak Euclidean sebagai fitur  skala terbesar akan mendominasi yang lain. Normalisasi fitur kontinu  adalah solusi untuk mengatasi kelemahan ini. </p>
+<p>### <em>Average Distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#average-distance">¶</a></p>
+<p>Berkenaan  dengan kekurangan dari Jarak Euclidian Distance diatas, rata rata jarak  adala versi modikfikasid ari jarak Euclidian untuk memperbaiki hasil.  Untuk dua titik x,y</p>
+<p>dalam ruang dimensi </p>
+<p>, rata-rata jarak didefinisikan dengan </p>
+<pre><code>dave=(1nn∑i=1(xi−yi)2)12
+</code></pre>
+<p>### <em>Weighted euclidean distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#weighted-euclidean-distance">¶</a></p>
+<p>Jika  berdasarkan tingkatan penting dari masing masing atribut ditentukan,  maka Weighted Euclidean distance adalah modifikisasi lain dari jarak  Euclidean distance yang dapat digunakan. Ukuran ini dirumuskan dengan </p>
+<p>dwe=(n∑i=1wi(xi−yi)2)12</p>
+<p>dimana wi</p>
+<p>### <em>Chord distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#chord-distance">¶</a></p>
+<p>Chord  distance adalah salah satu ukuran jarak modifikasi Euclidean distance  untuk mengatasi kekurangan dari Euclidean distance. Ini dapat dipecahkan  juga dengan menggunakan skala pengukuran yang baik. Jarak ini dapat  juga dihitung dari data yang tidak dinormalisasi . Chord distance  didefinisikan dengan </p>
+<pre><code>dchord=(2−2∑ni=1xiyi∥x∥2∥y∥2)12
+</code></pre>
+<p>dimana ∥x∥2</p>
+<p>adalah </p>
+<h3 id="mahalanobis-distance"><em>Mahalanobis distance</em><a href="https://mulaab.github.io/datamining/memahami-data/#mahalanobis-distance">¶</a></h3>
+<p>Mahalanobis  distance berdasarkan data berbeda dengan Euclidean dan Manhattan  distances yang bebas antra data dengan data yang lain. Jarak Mahalanobis  yang teratur dapat digunakan untuk mengekstraksi hyperellipsoidal  clusters. Jarak Mahalanobis dapat mengurangi distorsi yang disebabkan  oleh korelasi linier antara fitur dengan menerapkan transformasi  pemutihan ke data atau dengan menggunakan kuadrat Jarak mahalanobis.  Mahalanobis distance dinyatakan dengan</p>
+<pre><code>dmah=√(x−y)S−1(x−y)T
+</code></pre>
+<p>diman S</p>
+<p>adalah matrik covariance data.</p>
+<p>### <em>Cosine measure</em><a href="https://mulaab.github.io/datamining/memahami-data/#cosine-measure">¶</a></p>
+<p>Ukuran Cosine similarity lebih banyak digunakan dalam similaritas dokumen dan dinyatakan dengan </p>
+<pre><code>Cosine(x,y)=∑ni=1xiyi∥x∥2∥y∥2
+</code></pre>
+<p>dimana ∥y∥2</p>
+<p>adalah Euclidean norm dari vektor ∥y∥2=√y21+y22+…+y2n</p>
+<p>### <em>Pearson correlation</em><a href="https://mulaab.github.io/datamining/memahami-data/#pearson-correlation">¶</a></p>
+<p>Pearson  correlation banyak digunakan dalam data expresi gen. Ukuran similaritas  ini menghitung similaritas antara duan bentuk pola expresi gen. Pearson  correlation didefinisikan dengan </p>
+<pre><code>Pearson(x,y)=∑ni=1(xi−μx)(yi−μy)√∑ni=1(xi−yi)2√∑ni=1(xi−yi)2
+</code></pre>
+<p>The Pearson correlation kelemahannya adalah sensitif terhadap outlier</p>
+<p>## Mengukur Jarak Atribut Binary<a href="https://mulaab.github.io/datamining/memahami-data/#mengukur-jarak-atribut-binary">¶</a></p>
+<p>Mari  kita lihat similaritas dan desimilirity untuk objek yang dijelaskan  oleh atribut biner simetris atau asimetris. Aatribut biner hanya  memiliki dua status: 0 dan 1 Contoh atribut perokok menggambarkan  seorang pasien, misalnya, 1 menunjukkan bahwa pasien merokok, sedangkan 0  menunjukkan pasien tidak merokok. Memperlakukan atribut biner sebagai  atribut numerik tidak diperkenankan. Oleh karena itu, metode khusus  untuk data biner diperlukan untuk membedakan komputasi.</p>
+<p>Jadi,  bagaimana kita bisa menghitung ketidaksamaan antara dua atribut biner?  ”Satu pendekatan melibatkan penghitungan matriks ketidaksamaan dari data  biner yang diberikan. Jika semua atribut biner dianggap memiliki bobot  yang sama, kita memiliki tabel kontingensi 2×2</p>
+<p>di mana i dan r adalah jumlah atribut yang sama dengan 1 untuk objek j, i tetapi 1 untuk objek t adalah jumlah atribut yang sama dengan 0 untuk kedua objek j. Jumlah total atribut adalah p=q+r+s+t</p>
+<p>Ingatlah  bahwa untuk atribut biner simetris, masing-masing nilai bobot yang  sama.Dissimilarity yang didasarkan pada atribut aymmetric binary disebut  symmetric binary dissimilarity. Jika objek i dan j dinyatakan sebagai  atribut biner simetris, maka dissimilarity antari</p>
+<p>dan </p>
+<p>adalah</p>
+<pre><code>d(i,j)=r+sq+r+s+t
+</code></pre>
+<p>Untuk  atribut biner asimetris, kedua kondisi tersebut tidak sama pentingnya,  seperti hasil positif (1) dan negatif (0) dari tes penyakit. Diberikan  dua atribut biner asimetris, pencocokan keduanya 1 (kecocokan positif)  kemudian dianggap lebih signifikan daripada kecocokan negatif.  Ketidaksamaan berdasarkan atribut-atribut ini disebut asimetris biner  dissimilarity, di mana jumlah kecocokan negatif, t, dianggap tidak  penting dan dengan demikian diabaikan. Berikut perhitungannya</p>
+<pre><code>d(i,j)=r+sq+r+s
+</code></pre>
+<p>Kita  dapat mengukur perbedaan antara dua atribut biner berdasarkan pada  disimilarity. Misalnya, biner asimetris kesamaan antara objek i</p>
+<p>dan </p>
+<p>dapat dihitung dengan</p>
+<pre><code>sim(i,j)=qq+r+s=1−d(i,j)
+</code></pre>
+<p>Persamaan similarity ini disebut dengan <strong>Jaccard coefficient</strong></p>
+<p>## Mengukur Jarak Tipe categorical<a href="https://mulaab.github.io/datamining/memahami-data/#mengukur-jarak-tipe-categorical">¶</a></p>
+<p><strong>Li, C., &amp; Li, H. (2010). A Survey of Distance Metrics for Nominal Attributes. JSW, 5(11), 1262-1269.</strong></p>
+<p>### <em>Overlay Metric</em><a href="https://mulaab.github.io/datamining/memahami-data/#overlay-metric">¶</a></p>
+<p>Ketika  semua atribut adalah bertipe nominal, ukuran jarak yang paling  sederhana adalah dengan Ovelay Metric (OM) yang dinyatakan dengan </p>
+<pre><code>d(x,y)=n∑i=1δ(ai(x),ai(y))
+</code></pre>
+<p>dimana n</p>
+<p>adalah banyaknya atribut, ai(y) adalah nilai atribut ke Ai dari masing masing objek y, ai(x)=ai(y)</p>
+<p>OM  banyak digunakan oleh instance-based learning dan locally weighted  learning. Jelas sekali , ini sedikit beruk untuk mengukur jarak antara  masing-masing pasangan sample, karena gagal memanfaatkan tambahan  informasi yang diberikan oleh nilai atribut nominal yang bisa membantu  dalam generalisasi.</p>
+<p>### <em>Value Difference Metric (VDM)</em><a href="https://mulaab.github.io/datamining/memahami-data/#value-difference-metric-vdm">¶</a></p>
+<p>VDM dikenalkan oleh Standfill and Waltz, versi sederhana dari VDM tanpa skema pembobotan didefinsisikan dengan </p>
+<pre><code>d(x,y)=n∑i=1C∑c=1|P(c|ai(x))−P(c|ai(y))|
+</code></pre>
+<p>dimana C</p>
+<p>adalah banyaknya kelas, x adalah Ai, yang memiliki nilai P(c|ai(y)) adalah probabilitas bersyarat dimana kelas c dengan atribut ai(y)</p>
+<p>VDM  mengasumsikan bahwa dua nilai dari atribut adalah lebih dekat jika  memiliki klasifikasi sama. Pendekatan lain berbasi probabilitas adalah  SFM (Short and Fukunaga Metric) yang kemudian dikembangkan oleh Myles  dan Hand dan didefinisikan dengan</p>
+<pre><code>d(x,y)=C∑c=1|P(c|x)−P(c|y)|
+</code></pre>
+<p>diman probabilitas keanggotaan kelas diestimasi dengan P(c|x)</p>
+<p>dan </p>
+<p>didekati dengan Naive Bayes, </p>
+<p>### <em>Minimum Risk Metric (MRM)</em><a href="https://mulaab.github.io/datamining/memahami-data/#minimum-risk-metric-mrm">¶</a></p>
+<p>Ukuran  ini dipresentasikan oleh Blanzieri and Ricci, berbeda dari SFM yaitu  meminimumkan selisih antara kesalahan berhingga dan kesalahan asymtotic.  MRM meminimumkan risk of misclassification yang didefinisikan dengan</p>
+<p>d(x,y)=C∑c=1P(c|x)(1−P(c|y))</p>
+<p>## <strong>Mengukur Jarak Tipe Ordinal</strong><a href="https://mulaab.github.io/datamining/memahami-data/#mengukur-jarak-tipe-ordinal">¶</a></p>
+<p><strong>Han, J., Pei, J., &amp; Kamber, M. (2011). Data mining: concepts and techniques. Elsevier</strong>.</p>
+<p>Nilai-nilai  atribut ordinal memiliki urutan atau peringkat, namun besarnya antara  nilai-nilai berturut-turut tidak diketahui. Contohnya tingkatan kecil,  sedang, besar untuk atribut ukuran. Atribut ordinal juga dapat diperoleh  dari diskritisasi atribut numerik dengan membuat rentang nilai ke dalam  sejumlah kategori tertentu. Kategori-kategori ini disusun dalam  peringkat. Yaitu, rentang atribut numerik dapat dipetakan ke atribut  ordinal f</p>
+<p>yang memiliki M adalah jumlah keadaan yang dapat dilakukan oleh atribut ordinalmemiliki. State ini menentukan peringkat </p>
+<p>Perlakuan untuk atribut ordinal adalah cukup sama dengan atribut numerik ketika menghitung disimilarity antara objek. Misalkan f</p>
+<p>adalah atribut-atribut dari atribut ordinal dari </p>
+<p>objek. Menghitung disimilarity terhadap f fitur sebagai berikut:</p>
+<ul>
+<li>Nilai f</li>
+</ul>
+<p>untuk objek ke-xif, dan Mf status urutan , mewakili peringkat xif dengan peringkatnya, </p>
+<p>Karena  setiap atribut ordinal dapat memiliki jumlah state yang berbeda,  diperlukan untuk memetakan rentang setiap atribut ke [0,0, 1.0] sehingga  setiap atribut memiliki bobot yang sama. Perl melakukan normalisasi  data dengan mengganti peringkat rif</p>
+<p>dengan </p>
+<ul>
+<li></li>
+<li>Dissimilarity  kemudian dihitung dengan menggunakan ukuran jarak seperti atribut  numerik dengan data yang baru setelah ditransformasi $ z _ { i f }$</li>
+</ul>
+<p>## <strong>Menghitung Jarak Tipe Campuran</strong><a href="https://mulaab.github.io/datamining/memahami-data/#menghitung-jarak-tipe-campuran">¶</a></p>
+<p><strong>Wilson,  D. R., &amp; Martinez, T. R. (1997). Improved heterogeneous distance  functions. Journal of artificial intelligence research, 6, 1-34.</strong></p>
+<p>Menghitung  ketidaksamaan antara objek dengan atribut campuran yang berupa nominal,  biner simetris, biner asimetris, numerik, atau ordinal yang ada pada  kebanyakan databasae dapat dinyatakan dengan memproses semua tipe  atribut secara bersamaan. Salah satu teknik tersebut menggabungkan  atribut yang berbeda ke dalam matriks ketidaksamaan tunggal dan  menyatakannya dengan skala interval antar [0,0,1.0]</p>
+<p>. Misalkan data berisi atribut i dan </p>
+<p>dinyatakan dengan </p>
+<pre><code>d(i,j)=∑pf=1δ(f)ijd(f)ij∑pf=1δ(f)ij
+</code></pre>
+<p>dimana δfij=0</p>
+<p>- jika xjf adalah hilang (i.e., tidak ada pengukuran dari atribut f untuk objek j</p>
+<ul>
+<li>jika xif=xjf=0</li>
+</ul>
+<p>dan </p>
+<p>atribut f</p>
+<ul>
+<li>adalah binary asymmetric, </li>
+</ul>
+<p>selain itu δfij=1</p>
+<p>Kontribusi dari atribut f</p>
+<p>untuk dissimilarity antara i dan j (yaitu.</p>
+<p>) dihitung bergantung pada tipenya,</p>
+<ul>
+<li>Jika f</li>
+</ul>
+<p>adalah numerik, </p>
+<p>, di mana h menjalankan semua nilai objek yang tidak hilang untuk atribut f</p>
+<p>Jika f</p>
+<p>adalah nominal atau binary,$d_{ij}^{f}=0 $jika dfij=1</p>
+<p>Jika f</p>
+<p>adalah ordinal maka hitung rangking zif=rif−1Mf−1 , dan perlakukan </p>
+<ul>
+<li>sebagai numerik.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
