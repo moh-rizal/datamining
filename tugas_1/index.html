@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Data Mining - data mining</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Data Mining";
+    var mkdocs_page_input_path = "tugas_1.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> data mining</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about.md">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">data mining</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Data Mining</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="data-mining">Data Mining</h1>
+<p><a href="../index.html">home</a></p>
+<ul>
+<li><strong>Median</strong></li>
+</ul>
+<p><strong>1) Median untuk data tunggal</strong>
+       Median adalah suatu nilai tengah yang telah diurutkan. Median dilambangkan Me.
+       Untuk menentukan nilai  Median  data tunggal dapat dilakukan dengan cara:
+       a) mengurutkan data kemudian dicari nilai tengah,
+       b) jika banyaknya data besar, setelah data diurutkan, digunakan rumus:</p>
+<p>​       Untuk n ganjil  : Me = X1/2(n + 1)</p>
+<p>​                                            Xn/2  + Xn/2 +1
+  ​       Untuk n genap: Me =   ––––––––––––
+  ​                                                    2</p>
+<p>​       Keterangan:
+  ​       xn/2 = data pada urutan ke-n/2 setelah diurutkan. </p>
+<p>​       Contoh:
+  ​       Tentukan median dari data: 2, 5, 4, 5, 6, 7, 5, 9, 8, 4, 6, 7, 8
+  ​       Jawab:
+  ​       Data diurutkan menjadi: 2, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 8, 9
+  ​       Median = data ke-(13 + 1)/2 = data ke-7
+  ​       Jadi mediannya = 6</p>
+<p><strong>2) Median untuk data kelompok</strong>
+   Jika data yang tersedia merupakan data kelompok, artinya data itu dikelompokkan ke dalam interval-interval kelas yang sama panjang. Untuk mengetahui nilai mediannya dapat ditentukan dengan rumus berikut ini.</p>
+<p><img alt="img" src="data:image/png;base64,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" />
+    Keterangan: 
+   Kelas median adalah kelas yang terdapat data X1/2 n
+   L = tepi bawah kelas median
+   c = lebar kelas
+   n = banyaknya data
+   F = frekuensi kumulatif kurang dari sebelum kelas median
+   f  = frekuensi kelas median</p>
+<p><strong>Modus</strong> </p>
+<p><strong>3. Modus</strong></p>
+<p>Modus ialah nilai yang paling sering muncul atau nilai yang mempunyai frekuensi tertinggi. Jika suatu data hanya mempunyai satu modus disebut unimodal dan bila memiliki dua modus disebut bimodal, sedangkan jika memiliki modus lebih dari dua disebut multimodal. Modus dilambangkan dengan Mo.</p>
+<p><strong>1) Modus data tunggal</strong>
+       Modus dari data tunggal adalah data yang sering muncul atau data dengan
+       frekuensi tertinggi.
+       Perhatikan contoh soal berikut ini.
+       Contoh:
+       Tentukan modus dari data di bawah ini.
+       2, 1, 4, 1, 1, 5, 7, 8, 9, 5, 5, 10
+       Jawab:
+       Data yang sering muncul adalah 1 dan 5. Jadi modusnya adalah 1 dan 5.</p>
+<p><strong>2. Modus data kelompok</strong>
+       Modus data kelompok dirumuskan sebagai berikut:
+   <img alt="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALsAAAAwCAIAAADGhZwmAAAEyklEQVR4nO2cbZXtKgyGK6ESkFAJSKgEJCABCUhAAhKQgAQk4KD3R9Zh9VJKy0c6a87J82+6Z5NueIGEAMtBEC0sP/0CxC+DFPMW770x5qffopnpr02KeYX3XkqJVLi1VkrJOY8xYpRvjJkoGlLMM957vOYElFKMMbzyhRCzREOKeSDGyDkPIaBaEUIIIVBNcM699+PlkGIekFJqrbGtMMawnSTv/bZt4+WQYmo451AnCyCEsCwL9jB2HIcQQik1WAgppsa2bXhd3/7BGPOBLo/jCCGs6zooTVLMLagNue978ioYY9hOTGLcYSLF3MI5R/JgpJTn2eEDJybhvV/XdSTuI8WUwfMtspKzP51zWut936fbTQwKlBRTRko5JbK4kk122Z/OOWst5xzDNDD400gxZRhj42FFEaXUWRDJsbDWwhPnHKpinHMjwycppgDMFM45jMJhBTkZYoxprUMIaabAVsxxHMuydE9MpJgCxphlQawZY4xzDiYgY4xS6uxif6AYznl3xJTXS4xR/eFu4IIfqZRC6oV3nN+t/oaD4Dkxb/hAMSM/sNyTpJR3wzIsg6I683X2fWeMoeYFOefYbVbhA8UopboH0fLXIJVanOoqH31Dx3qXc65pNFrXFcntfcQYI4QAvxsvbwDOb19isqAY8MI459da01p7779JghQBn7RVr60T6LIsP6WYbwDF9DkVBcUYY0IIUsps6vHef5kEKQI+aatemxQTYxwJJX4F0PFSPN9EQTHQvbJlg/T8LjEBnj8sWXa8x0tgxG79VpNiRvrfL+LNOJra9Nx/bhVjrV3XNT2Egee4WWMWQqQqds7dbXDc951XedwZ2Ze0I8VceVRMalPYU5YqJFdMWkqCioOHMUYYOYrZFgh0s7cZ+jU39DkxB45ill9C5f0rijm3KbgoKTjNS0xjCUzn4E6nL1+dmKuG4Em9uvsoOjEhhKvPnw1djLFt214OZjTG1LOwedOeS4GKA+DJ1Ym5aqjiGnvvXZV6vFd0YrTWj2szNCtdqSimHtzUFAN98ezJXp0YiMPPTzjndxOHeqI+41ydmBjjm0MhpJgrdcVkbXruk/9TTAjhrA/O+bZt6b+Lg1UI4Vw6LED1/ooaVycGPLI3ISJF1xn16DprU/Bicz8GUjYw36fKUkpBofDpvu8gzKz2IfqCSKwvxK9ztg57m5VSQoh1XV9G2t+s4GEfVJto8XEchYW3lCu9HWP+VloV050lwD6oNsvi5CzB30cIoakXdmciu/ddt2a+Bi3Oz0T+43RvBujO0XZvHemzOH+3wz9O346qkc3kfYrptjhzRxVxNO7anHJQrUkx4xZHgkFSTJmXO8NnHVR7r5hxi452hmPwZqafeFDtpWKmWKTTJyg8ugiDB9U6Ml91i1prrTWETvXAkE64YVE/RTv3oNqbMaZi8XwLlZSykjmhU7SI1P1KNfWg2hvFVCxaa9NsVVcqndTHpXIbyNyDam8U82gREEJUEkZ0Gwgurnrj0MSDai8937rF4+mSRLpx6Au6bzXDUEydlAkujiJ0q9lHdN+c2KSY1szXFWttWqcper6cbk78jI7bWb85qJaw1p739l6nHrqd9WtQb4DGhm6A/hnolnmAFEO0QYoh2vgPuGG4ydbOS6oAAAAASUVORK5CYII=" /></p>
+<pre><code>  Keterangan:
+  L   = tepi bawah kelas modus
+  c    = lebar kelas
+  d1 = selisih frekuensi kelas modus dengan kelas sebelumnya
+  d2 = selisih frekuensi kelas modus dengan kelas sesudahnya
+</code></pre>
+<p><strong>Kuartil</strong> </p>
+<p><strong>Kuartil (Q)</strong></p>
+<p>Seperti yang sudah dibahas sebelumnya, bahwa median membagi data yang telah diurutkan menjadi dua bagian yang sama banyak. Adapun kuartil adalah membagi data yang telah diurutkan menjadi empat bagian yang sama banyak.
+   <strong>1)</strong> <strong>Kuartil data tunggal</strong>
+       Urutkan data dari yang kecil ke yang besar, kemudian tentukan kuartil dengan rumus sebagai berikut:
+     <img alt="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAAArCAIAAACW898lAAAElklEQVR4nO2bXbncIBCGkYAEJERCJCABCUgYCUhAAhKQgAQk4IBeTDvPHCBstk1z9uzyXjWzJKV8zA+TVNTFJyG+ewKLW1l6/z0ppe+ewngOk4ktvU/Rr6Bz7ltm0pBzDiGcMSJL78c456SUjSXGePM0UkrbtvV2AOi349BYl95nKKXknPnlvu+XPDnGyJ88GQYAACDEQK/hfI4mufR+Gu/9VcEcAM7HiRjjUO9aq9a63zdD49L7afZ9v6pSu0pv5xwAnDEuvWeklGKMjTf3ix5C8N5jiRRjxPB7Zk9cpXeMsY/eQ+PSe4b3vtaqlCJVcs5N7VZKCSHEGKWUNCyEcCbHX6V3Skkpdca49D7Ee59zTikJIUopaOydBod575VSNMx7P6ylG67Su46iztC49H6AtVZrTZfDIFlrNcYYY44uif0rSqlt27jFWns0k6X3HSilMKojR3o3w6SURx0PzvLv1yKEgNmaxCul9IuYcxZC0OGnv+uIC+u1Pn0MjUvvGQCAYZkfbJp6rdaKyXt+19Hzr9KbJ52Jsb2/lAJfOdMAepYQgrV233cqcOaD8ZDjvecx8wZijNbaGCOfp9a6EQkAeN4d3jXkpN54wNNaCyGstb0oANC3gIbGw34NrzZPknM+fwsA9KeFhhCCMYY/03s/rIPuBDfrJY96yr8nbNvWr/zQONZbKfUXy9rULHOOKljCe9+Ho1qr1vpmL++5qn/+lIdMHtKv5NBYh3pj9fHsmjY1y0PmmyOEcBRgAODM0fa/gsnle+dAWGv7hRoa61Bv7/1TytFdD+MzMd8cpRQp5dGCOucmx5LbCCH8u2v+OymlvnE7NCKDhTPGzJXDXjE1lkMI6HPbtgEAP4SEP6SUuJ1vDvyJ/woAfQ3Mf30FvWut/6OSvWQOk4kNFm6SvEspWmvaO7zc6OMzH9k8k5I3FrHWWr7D5tXDw+3YzGGfclXl9VMYtw6OYqnWmp8ptdYY0/r4jMcGumx2A17ylxB0LzY0Jtmx2Q3NxwiLOa3ew+SNrw1oK8QYMQLz1wPc5xr5h5fGmGEKxK7C0SkFf+XTa3LBhYj34vc/qvlHDqOlc66Ugq/8hkvTHK4a+Y8u8YHN3kL/PtL72QiML7AnvMI3pnfS6t3nTsyvdfSqgLyTwjVGAgDgI2k3oCPyzUHSch/dto3iOaqCf3bONT0EngiGwCNe51h1D1/07pM3fvZGYnA3LaWg39daxZ8Yizk7pUR655yVUs45fElcv+ZyIQRmCu7Q1OgnI553qVxA8NRxVevjQ/itN7bNsUNrjMG9b4yRUnKN0Xcxf3vvafWttZjXeUZH18SRvJfLYzh6WO9k2LNEO4pKY/inB7iZLl+UN+YlDrJHYPbNOVPOxmBAA6y1L/Ld/0/hpfUmsLfKhSd7zvlHS47vvm77636G3lJKIURfzOO7k1foa/4dpRSl1NK7BeuG9+ureO/3fV96fwR4+l96fwSlFDxxLL0/Aqoxl97vT2T/LXTp/eZQJEeW3m8OdhsJpRRKfs/pY+n9zSz//iyW3p8CdlKllPjd34rni+tZen8WvwD9d4GLLin7qQAAAABJRU5ErkJggg==" /></p>
+<pre><code>   Contoh:
+   Tentukan Q1, Q2, dan Q3 dari data : 3, 4, 7, 8, 7, 4, 8, 4, 6, 9, 10, 8, 3, 7, 12.
+    Jawab:
+    Langkah 1: urutkan data dari  kecil ke besar sehingga diperoleh 
+                     3, 3, 4, 4, 4, 6, 7, 7, 7, 8, 8, 8, 9, 10, 12.
+                                                1(15+1)
+    Langkah 2: Letak data Q1=–––––––– = 4
+                                                     4
+                     Jadi Q1 terletak pada data ke-empat yaitu 4
+</code></pre>
+<p>​                                                  2(15+1)
+  ​      Langkah 3: Letak data Q2=–––––––– = 8
+  ​                                                       4
+  ​                       Jadi Q2 terletak pada data ke-delapan yaitu 7</p>
+<p>​                                                  3(15+1)
+  ​      Langkah 4: Letak data Q1=–––––––– = 12
+  ​                                                       4
+  ​                       Jadi Q3 terletak pada data ke-duabelas yaitu 8</p>
+<h2 id="code">Code</h2>
+<pre><code class="python">import pandas as pd
+pd.read_csv(&quot;data.csv&quot;,sep=&quot;|&quot;)
+</code></pre>
+
+<pre><code class="python">from scipy import stats
+d1=pd.read_csv(&quot;data.csv&quot;,sep=&quot;|&quot;,usecols=['usia','tinggi','ukuranSepatu','angkaFavorit'])
+d1.describe()
+</code></pre>
+
+<pre><code class="python">import seaborn as sns
+import warnings
+warnings.filterwarnings(&quot;ignore&quot;)
+d2=pd.read_csv(&quot;data.csv&quot;,sep=&quot;|&quot;,usecols=[&quot;tinggi&quot;])
+d3=pd.read_csv(&quot;data.csv&quot;,sep=&quot;|&quot;,usecols=[&quot;usia&quot;])
+d4=pd.read_csv(&quot;data.csv&quot;,sep=&quot;|&quot;,usecols=[&quot;ukuranSepatu&quot;])
+d5=pd.read_csv(&quot;data.csv&quot;,sep=&quot;|&quot;,usecols=[&quot;angkaFavorit&quot;])
+sns.distplot(d2)
+sns.distplot(d3)
+sns.distplot(d4)
+sns.distplot(d5)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
