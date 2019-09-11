@@ -200,20 +200,14 @@
 </ul>
 <p>untuk objek ke-xif, dan Mf status urutan , mewakili peringkat xif dengan peringkatnya, </p>
 <p>Karena  setiap atribut ordinal dapat memiliki jumlah state yang berbeda,  diperlukan untuk memetakan rentang setiap atribut ke [0,0, 1.0] sehingga  setiap atribut memiliki bobot yang sama. Perl melakukan normalisasi  data dengan mengganti peringkat rif</p>
-<p>dengan </p>
-<ul>
-<li></li>
-<li>Dissimilarity  kemudian dihitung dengan menggunakan ukuran jarak seperti atribut  numerik dengan data yang baru setelah ditransformasi $ z _ { i f }$</li>
-</ul>
+<p>dengan Dissimilarity  kemudian dihitung dengan menggunakan ukuran jarak seperti atribut  numerik dengan data yang baru setelah ditransformasi $ z _ { i f }$
 <p><strong>Menghitung Jarak Tipe Campuran</strong><a href="https://mulaab.github.io/datamining/memahami-data/#menghitung-jarak-tipe-campuran">¶</a></p>
-<p><strong>Wilson,  D. R., &amp; Martinez, T. R. (1997). Improved heterogeneous distance  functions. Journal of artificial intelligence research, 6, 1-34.</strong></p>
-<p>Menghitung  ketidaksamaan antara objek dengan atribut campuran yang berupa nominal,  biner simetris, biner asimetris, numerik, atau ordinal yang ada pada  kebanyakan databasae dapat dinyatakan dengan memproses semua tipe  atribut secara bersamaan. Salah satu teknik tersebut menggabungkan  atribut yang berbeda ke dalam matriks ketidaksamaan tunggal dan  menyatakannya dengan skala interval antar [0,0,1.0]</p>
-<p>. Misalkan data berisi atribut i dan </p>
-<p>dinyatakan dengan </p>
+<p><strong>Wilson,  D. R., &amp; Martinez, T. R. (1997). Improved heterogeneous distance  functions. Journal of artificial intelligence research, 6, 1-34.</strong>
+<p>Menghitung  ketidaksamaan antara objek dengan atribut campuran yang berupa nominal,  biner simetris, biner asimetris, numerik, atau ordinal yang ada pada  kebanyakan databasae dapat dinyatakan dengan memproses semua tipe  atribut secara bersamaan. Salah satu teknik tersebut menggabungkan  atribut yang berbeda ke dalam matriks ketidaksamaan tunggal dan  menyatakannya dengan skala interval antar [0,0,1.0]. Misalkan data berisi atribut i dan
+dinyatakan dengan </p>
 <pre><code>d(i,j)=∑pf=1δ(f)ijd(f)ij∑pf=1δ(f)ij
 </code></pre>
-<p>dimana δfij=0</p>
-<p>- jika xjf adalah hilang (i.e., tidak ada pengukuran dari atribut f untuk objek j</p>
+<p>dimana δfij=0 jika xjf adalah hilang (i.e., tidak ada pengukuran dari atribut f untuk objek j</p>
 <ul>
 <li>jika xif=xjf=0</li>
 </ul>
@@ -222,19 +216,13 @@
 <ul>
 <li>adalah binary asymmetric, </li>
 </ul>
-<p>selain itu δfij=1</p>
-<p>Kontribusi dari atribut f</p>
-<p>untuk dissimilarity antara i dan j (yaitu.</p>
-<p>) dihitung bergantung pada tipenya,</p>
+<p>selain itu δfij=1 Kontribusi dari atribut f untuk dissimilarity antara i dan j (yaitu) dihitung bergantung pada tipenya,</p>
 <ul>
 <li>Jika f</li>
 </ul>
-<p>adalah numerik, </p>
-<p>, di mana h menjalankan semua nilai objek yang tidak hilang untuk atribut f</p>
-<p>Jika f</p>
-<p>adalah nominal atau binary,$d_{ij}^{f}=0 $jika dfij=1</p>
-<p>Jika f</p>
-<p>adalah ordinal maka hitung rangking zif=rif−1Mf−1 , dan perlakukan </p>
+<p>adalah numerik, di mana h menjalankan semua nilai objek yang tidak hilang untuk atribut f</p>
+<p>Jika f adalah nominal atau binary,$d_{ij}^{f}=0 $jika dfij=1</p>
+<p>Jika f adalah ordinal maka hitung rangking zif=rif−1Mf−1 , dan perlakukan </p>
 <ul>
 <li>sebagai numerik.</li>
 </ul>
