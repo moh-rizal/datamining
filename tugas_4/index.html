@@ -45,18 +45,18 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
+  <ul class="current">
+    
           
             <li class="toctree-l1">
-		
+    
     <a class="" href="..">Home</a>
-	    </li>
+      </li>
           
             <li class="toctree-l1">
-		
+    
     <a class="" href="../about.md">About</a>
-	    </li>
+      </li>
           
         </ul>
       </div>
@@ -370,6 +370,1329 @@ table(df)
 </tr>
 </tbody>
 </table>
+<h3 id="2-menghitung-probabilitas-prior-dan-likehood">2. Menghitung Probabilitas Prior dan Likehood</h3>
+<pre><code class="python">test = [3,5,2,4]
+print(&quot;data test: &quot;, test)
+</code></pre>
+
+<pre><code>data test:  [3, 5, 2, 4]
+</code></pre>
+
+<pre><code class="python">def numProbability(v, mu, sigma):
+    return (1.0/sqrt(2 * pi * (sigma ** 2))*exp(-((v-mu)**2)/(2*(sigma**2))))
+
+def catProbability(sample,universe):
+    return sample.shape[0]/universe.shape[0]
+
+Ps = ([[y]+[numProbability(x, d[1][i], d[2][i]) for i,x in enumerate(test)]+
+          [catProbability(d[0],dataset)] for y,d in dataset_classes.items()])
+
+table(DataFrame(Ps, columns=[&quot;classes&quot;]+[&quot;P( %d | C )&quot; % d for d in test]+[&quot;P( C )&quot;]))
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>classes</th>
+<th align="right">P( 3 | C )</th>
+<th align="right">P( 5 | C )</th>
+<th align="right">P( 2 | C )</th>
+<th align="right">P( 4 | C )</th>
+<th align="right">P( C )</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setosa</td>
+<td align="right">1.60644e-12</td>
+<td align="right">2.91181e-11</td>
+<td align="right">0.0539353</td>
+<td align="right">6.2409e-115</td>
+<td align="right">0.333333</td>
+</tr>
+<tr>
+<td>versicolor</td>
+<td align="right">2.65334e-06</td>
+<td align="right">3.19469e-09</td>
+<td align="right">2.62138e-05</td>
+<td align="right">6.43354e-25</td>
+<td align="right">0.366667</td>
+</tr>
+<tr>
+<td>virginica</td>
+<td align="right">5.08118e-08</td>
+<td align="right">4.31312e-08</td>
+<td align="right">2.06241e-09</td>
+<td align="right">1.00551e-19</td>
+<td align="right">0.3</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="python">rnk = ([[r[0], prod(r[1:])] for r in Ps])
+rnkT = DataFrame(rnk, columns=['class', 'probability']).sort_values('probability')[::-1]
+table(rnkT)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th align="left">probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>virginica</td>
+<td align="left">1.97766e-34</td>
+</tr>
+<tr>
+<td>versicolor</td>
+<td align="left">4.03412e-57</td>
+</tr>
+<tr>
+<td>setosa</td>
+<td align="left">5.56132e-136</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="python">print(&quot;Prediksi Bayes untuk&quot;, test, &quot;adalah&quot;, rnkT.values[0,0])
+</code></pre>
+
+<pre><code>Prediksi Bayes untuk [3, 5, 2, 4] adalah virginica
+</code></pre>
+
+<pre><code class="python">def prediksi(sampel):
+    priorLikehoods = ([[y]+[numericalPriorProbability(x, d[1][i], d[2][i]) for i,x in enumerate(sampel)]+
+          [categoricalProbability(d[0],dataset)] for y,d in dataset_classes.items()])
+    products = ([[r[0], prod(r[1:])] for r in priorLikehoods])
+    result = DataFrame(products, columns=['class', 'probability']).sort_values('probability')[::-1]
+    return result.values[0,0]
+
+dataset_test = DataFrame([list(d)+[prediksi(d[:4])] for d in data], columns=list(dataset.columns)+['Prediksi kelas'])
+table(dataset_test)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right">sepal length (cm)</th>
+<th align="right">sepal width (cm)</th>
+<th align="right">petal length (cm)</th>
+<th align="right">petal width (cm)</th>
+<th>class</th>
+<th>Prediksi kelas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.6</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.7</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">2.9</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3</td>
+<td align="right">1.4</td>
+<td align="right">0.1</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.3</td>
+<td align="right">3</td>
+<td align="right">1.1</td>
+<td align="right">0.1</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">4</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">4.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.9</td>
+<td align="right">1.3</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.5</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.7</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.6</td>
+<td align="right">1</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.3</td>
+<td align="right">1.7</td>
+<td align="right">0.5</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.4</td>
+<td align="right">1.9</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.4</td>
+<td align="right">1.6</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">3.5</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">3.4</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3.1</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">4.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">4.2</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.2</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">3.5</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">3.1</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">3</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.4</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.5</td>
+<td align="right">1.3</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.5</td>
+<td align="right">2.3</td>
+<td align="right">1.3</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.4</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.5</td>
+<td align="right">1.6</td>
+<td align="right">0.6</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.9</td>
+<td align="right">0.4</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.8</td>
+<td align="right">3</td>
+<td align="right">1.4</td>
+<td align="right">0.3</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">3.8</td>
+<td align="right">1.6</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">4.6</td>
+<td align="right">3.2</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5.3</td>
+<td align="right">3.7</td>
+<td align="right">1.5</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">3.3</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td>setosa</td>
+<td>setosa</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="right">3.2</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">3.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">4.9</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.3</td>
+<td align="right">4</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">2.8</td>
+<td align="right">4.6</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.8</td>
+<td align="right">4.5</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">4.7</td>
+<td align="right">1.6</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">2.4</td>
+<td align="right">3.3</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.6</td>
+<td align="right">2.9</td>
+<td align="right">4.6</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.2</td>
+<td align="right">2.7</td>
+<td align="right">3.9</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">3.5</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3</td>
+<td align="right">4.2</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.2</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.9</td>
+<td align="right">3.6</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">3</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">4.1</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.5</td>
+<td align="right">3.9</td>
+<td align="right">1.1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3.2</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.5</td>
+<td align="right">4.9</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.8</td>
+<td align="right">4.7</td>
+<td align="right">1.2</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.9</td>
+<td align="right">4.3</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.6</td>
+<td align="right">3</td>
+<td align="right">4.4</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">2.8</td>
+<td align="right">4.8</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">1.7</td>
+<td>versicolor</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.9</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.6</td>
+<td align="right">3.5</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.4</td>
+<td align="right">3.8</td>
+<td align="right">1.1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.4</td>
+<td align="right">3.7</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">3.9</td>
+<td align="right">1.2</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.6</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.4</td>
+<td align="right">3</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">3.4</td>
+<td align="right">4.5</td>
+<td align="right">1.6</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">4.7</td>
+<td align="right">1.5</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.3</td>
+<td align="right">4.4</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">3</td>
+<td align="right">4.1</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.5</td>
+<td align="right">4</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.5</td>
+<td align="right">2.6</td>
+<td align="right">4.4</td>
+<td align="right">1.2</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">3</td>
+<td align="right">4.6</td>
+<td align="right">1.4</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.6</td>
+<td align="right">4</td>
+<td align="right">1.2</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.7</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">3</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.9</td>
+<td align="right">4.2</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">2.9</td>
+<td align="right">4.3</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.1</td>
+<td align="right">2.5</td>
+<td align="right">3</td>
+<td align="right">1.1</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.8</td>
+<td align="right">4.1</td>
+<td align="right">1.3</td>
+<td>versicolor</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">6</td>
+<td align="right">2.5</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.1</td>
+<td align="right">3</td>
+<td align="right">5.9</td>
+<td align="right">2.1</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.9</td>
+<td align="right">5.6</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.8</td>
+<td align="right">2.2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.6</td>
+<td align="right">3</td>
+<td align="right">6.6</td>
+<td align="right">2.1</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">4.9</td>
+<td align="right">2.5</td>
+<td align="right">4.5</td>
+<td align="right">1.7</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">7.3</td>
+<td align="right">2.9</td>
+<td align="right">6.3</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">2.5</td>
+<td align="right">5.8</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3.2</td>
+<td align="right">5.1</td>
+<td align="right">2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.7</td>
+<td align="right">5.3</td>
+<td align="right">1.9</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">3</td>
+<td align="right">5.5</td>
+<td align="right">2.1</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">5.7</td>
+<td align="right">2.5</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.8</td>
+<td align="right">5.1</td>
+<td align="right">2.4</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">3.2</td>
+<td align="right">5.3</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.5</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">3.8</td>
+<td align="right">6.7</td>
+<td align="right">2.2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">2.6</td>
+<td align="right">6.9</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">2.2</td>
+<td align="right">5</td>
+<td align="right">1.5</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.2</td>
+<td align="right">5.7</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">5.6</td>
+<td align="right">2.8</td>
+<td align="right">4.9</td>
+<td align="right">2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">2.8</td>
+<td align="right">6.7</td>
+<td align="right">2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.7</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.1</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3.2</td>
+<td align="right">6</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">2.8</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">3</td>
+<td align="right">4.9</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.8</td>
+<td align="right">5.6</td>
+<td align="right">2.1</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.2</td>
+<td align="right">3</td>
+<td align="right">5.8</td>
+<td align="right">1.6</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.4</td>
+<td align="right">2.8</td>
+<td align="right">6.1</td>
+<td align="right">1.9</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">7.9</td>
+<td align="right">3.8</td>
+<td align="right">6.4</td>
+<td align="right">2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">2.8</td>
+<td align="right">5.6</td>
+<td align="right">2.2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.8</td>
+<td align="right">5.1</td>
+<td align="right">1.5</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.1</td>
+<td align="right">2.6</td>
+<td align="right">5.6</td>
+<td align="right">1.4</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">7.7</td>
+<td align="right">3</td>
+<td align="right">6.1</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">3.4</td>
+<td align="right">5.6</td>
+<td align="right">2.4</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.4</td>
+<td align="right">3.1</td>
+<td align="right">5.5</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">4.8</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>versicolor</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.4</td>
+<td align="right">2.1</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.1</td>
+<td align="right">5.6</td>
+<td align="right">2.4</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">5.1</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.8</td>
+<td align="right">3.2</td>
+<td align="right">5.9</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3.3</td>
+<td align="right">5.7</td>
+<td align="right">2.5</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.7</td>
+<td align="right">3</td>
+<td align="right">5.2</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.3</td>
+<td align="right">2.5</td>
+<td align="right">5</td>
+<td align="right">1.9</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.5</td>
+<td align="right">3</td>
+<td align="right">5.2</td>
+<td align="right">2</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">6.2</td>
+<td align="right">3.4</td>
+<td align="right">5.4</td>
+<td align="right">2.3</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+<tr>
+<td align="right">5.9</td>
+<td align="right">3</td>
+<td align="right">5.1</td>
+<td align="right">1.8</td>
+<td>virginica</td>
+<td>virginica</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-kesimpulan">3. Kesimpulan</h3>
+<pre><code class="python">corrects = dataset_test.loc[dataset_test['class'] == dataset_test['Prediksi kelas']].shape[0]
+print('Prediksi Training Bayes: %d dari %d = %f %%' % (corrects, len(data), corrects / len(data) * 100))
+</code></pre>
+
+<pre><code>Prediksi Training Bayes: 141 dari 150 == 94.000000 %
+</code></pre>
               
             </div>
           </div>
